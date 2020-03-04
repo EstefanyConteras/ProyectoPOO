@@ -5,5 +5,21 @@ import java.util.ArrayList;
  */
 public class Inventario {
     public int capacidad;
-    public ArrayList<Item> items;
+    public ArrayList<Item> contenido;
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public int getCapacidad() {
+        return this.capacidad;
+    }
+
+    public void setContenido(ArrayList<Item> contenido) {
+        this.contenido = contenido;
+    }
+
+    public ArrayList<Item> getContenido() {
+        return this.contenido;
+    }
 }

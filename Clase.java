@@ -1,4 +1,4 @@
-enum Clase {
+public enum Clase {
     MAGO,
     GUERRERO,
     CAZADOR,

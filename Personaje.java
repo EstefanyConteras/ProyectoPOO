@@ -107,11 +107,66 @@ public class Personaje {
         return this.dineroActual;
     }
 
-    public Personaje(String nombre) {
-        this.setNombre(nombre);
-
-        System.out.println("Personaje creado con nombre " + nombre + ".");
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
+    public int getNivel() {
+        return this.nivel;
+    }
+
+    public void setEXP(int EXP) {
+        this.EXP = EXP;
+    }
+
+    public int getEXP() {
+        return this.EXP;
+    }
+
+    public void setItemPrimario(Item itemPrimario) {
+        this.itemPrimario = itemPrimario;
+    }
+
+    public Item getItemPrimario() {
+        return this.itemPrimario;
+    }
+
+    public void setItemSecundario(Item itemSecundario) {
+        this.itemSecundario = itemSecundario;
+    }
+
+    public Item getItemSecundario() {
+        return this.itemSecundario;
+    }
+
+    public void setAtaqueFisico(int ataqueFisico) {
+        this.ataqueFisico = ataqueFisico;
+    }
+
+    public int getAtaqueFisico() {
+        return this.ataqueFisico;
+    }
+
+    public void setAfinidadMagica(int afinidadMagica) {
+        this.afinidadMagica = afinidadMagica;
+    }
+
+    public int getAfinidadMagica() {
+        return this.afinidadMagica;
+    }
+
+    public void setVestuario(ArrayList<Item> vestuario) {
+        //Implementar metodo en clase Vestuario para cambiar vestuario completo
+    }
+
+    public ArrayList<Item> getVestuario() {
+        return this.vestuario;
+    }
+
+    public Personaje(String nombre, int vidaMaxima, int estaminaMaxima, int ataqueFisico, int afinidadMagica) {
+        this.setNombre(nombre);
+        this.setVidaMaxima(vidaMaxima);
+        
+    }
 }
  
