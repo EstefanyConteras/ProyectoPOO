@@ -73,8 +73,8 @@ public class Personaje {
         }
     }
 
-    public void setInventario(Inventario inventario) {
-        //if inventario is not null, then assign inventario al inventario de jugador
+    public void setInventario(int espaciosInventario) {
+        this.inventario = new Inventario(espaciosInventario);
     }
 
     public Inventario getInventario() {
@@ -156,17 +156,67 @@ public class Personaje {
     }
 
     public void setVestuario(ArrayList<Item> vestuario) {
-        //Implementar metodo en clase Vestuario para cambiar vestuario completo
+        if(vestuario.size() != 5) {
+            return;
+        } else {
+            this.vestuario = vestuario;
+        }
     }
 
     public ArrayList<Item> getVestuario() {
         return this.vestuario;
     }
 
-    public Personaje(String nombre, int vidaMaxima, int estaminaMaxima, int ataqueFisico, int afinidadMagica) {
+    public Personaje(String nombre, Clase clase) {
         this.setNombre(nombre);
-        this.setVidaMaxima(vidaMaxima);
-        
+        this.setClase(clase);
+
+        switch(clase) {
+            case MAGO:
+                this.setVidaMaxima(700);
+                this.setEstaminaMaxima(500);
+                this.setAtaqueFisico(50);
+                this.setAfinidadMagica(300);
+            break;
+            case GUERRERO:
+                this.setVidaMaxima(800);
+                this.setEstaminaMaxima(300);
+                this.setAtaqueFisico(200);
+                this.setAfinidadMagica(0);
+            break;
+            case CAZADOR:
+                this.setVidaMaxima(600);
+                this.setEstaminaMaxima(1000);
+                this.setAtaqueFisico(100);
+                this.setAfinidadMagica(100);
+            break;
+            case ASESINO:
+                this.setVidaMaxima(400);
+                this.setEstaminaMaxima(1000);
+                this.setAtaqueFisico(200);
+                this.setAfinidadMagica(150);
+            break;
+            case CABALLERO:
+                this.setVidaMaxima(1000);
+                this.setEstaminaMaxima(600);
+                this.setAtaqueFisico(200);
+                this.setAfinidadMagica(100);
+            break;
+            default:
+                this.setVidaMaxima(100);
+                this.setEstaminaMaxima(100);
+                this.setAtaqueFisico(100);
+                this.setAfinidadMagica(100);
+            break;
+        }
+
+        this.setDineroActual(0);
+        this.setEXP(0);
+        this.setNivel(0);
+        this.setItemPrimario(null);
+        this.setItemSecundario(null);
+        this.setInventario(10);
+        this.setVestuario(new ArrayList<Item>(5));
     }
 }
  

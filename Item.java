@@ -29,4 +29,10 @@ public abstract class Item {
     public int getCosto() {
         return this.costo;
     }
+
+    public Item(String nombre, String descripcion, int costo) {
+        this.setNombre(nombre);
+        this.setDescripcion(descripcion);
+        this.setCosto(costo);
+    }
 }

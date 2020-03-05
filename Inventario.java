@@ -22,4 +22,9 @@ public class Inventario {
     public ArrayList<Item> getContenido() {
         return this.contenido;
     }
+
+    public Inventario(int capacidad) {
+        this.setCapacidad(capacidad);
+        this.setContenido(new ArrayList<Item>(capacidad));
+    }
 }
