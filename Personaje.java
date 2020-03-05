@@ -218,5 +218,9 @@ public class Personaje {
         this.setInventario(10);
         this.setVestuario(new ArrayList<Item>(5));
     }
+
+    public static void imprimirInformacionDePersonaje(Personaje personaje) {
+        System.out.printf("Informacion de Personaje %s: %n", personaje.getNombre());
+    }
 }
  
