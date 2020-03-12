@@ -42,7 +42,7 @@ public class Personaje {
     }
 
     public void setVidaActual(int vidaActual) {
-        if(vidaActual < getVidaMaxima()) {
+        if(vidaActual <= getVidaMaxima()) {
             this.vidaActual = vidaActual;
         } else {
             this.vidaActual = 0;
@@ -66,7 +66,7 @@ public class Personaje {
     }
 
     public void setEstaminaActual(int estaminaActual) {
-        if(estaminaActual < getEstaminaMaxima()) {
+        if(estaminaActual <= getEstaminaMaxima()) {
             this.estaminaActual = estaminaActual;
         } else {
             this.estaminaActual = 0;
@@ -167,38 +167,50 @@ public class Personaje {
         return this.vestuario;
     }
 
-    public Personaje(String nombre, Clase clase) {
+    public Personaje(String nombre, Clase clase, char sexo) {
+        ArrayList<Item> temp = new ArrayList<Item>(5);
         this.setNombre(nombre);
         this.setClase(clase);
+        this.setSexo(sexo);
 
         switch(clase) {
             case MAGO:
                 this.setVidaMaxima(700);
+                this.setVidaActual(700);
                 this.setEstaminaMaxima(500);
+                this.setEstaminaActual(500);
                 this.setAtaqueFisico(50);
                 this.setAfinidadMagica(300);
             break;
             case GUERRERO:
                 this.setVidaMaxima(800);
+                this.setVidaActual(800);
                 this.setEstaminaMaxima(300);
+                this.setEstaminaActual(300);
                 this.setAtaqueFisico(200);
                 this.setAfinidadMagica(0);
             break;
             case CAZADOR:
                 this.setVidaMaxima(600);
+                this.setVidaActual(600);
                 this.setEstaminaMaxima(1000);
+                this.setEstaminaActual(1000);
                 this.setAtaqueFisico(100);
                 this.setAfinidadMagica(100);
             break;
             case ASESINO:
                 this.setVidaMaxima(400);
+                this.setVidaActual(400);
                 this.setEstaminaMaxima(1000);
+                this.setEstaminaActual(1000);
                 this.setAtaqueFisico(200);
                 this.setAfinidadMagica(150);
             break;
             case CABALLERO:
                 this.setVidaMaxima(1000);
+                this.setVidaActual(1000);
                 this.setEstaminaMaxima(600);
+                this.setEstaminaActual(600);
                 this.setAtaqueFisico(200);
                 this.setAfinidadMagica(100);
             break;
@@ -216,11 +228,49 @@ public class Personaje {
         this.setItemPrimario(null);
         this.setItemSecundario(null);
         this.setInventario(10);
-        this.setVestuario(new ArrayList<Item>(5));
+        this.setVestuario(temp);
+    }
+
+    public static void imprimirInformacionDeItems(Personaje personaje) {
+        String itemP, itemS;
+        if(personaje.itemPrimario != null && personaje.itemSecundario == null) {
+            itemP = personaje.itemPrimario.getNombre();
+            itemS = "No hay un item secundario.";
+        } else if(personaje.itemPrimario == null && personaje.itemSecundario != null) {
+            itemP = "No hay un item primario";
+            itemS = personaje.itemSecundario.getNombre();
+        } else {
+            itemP = "No hay un item primario";
+            itemS = "No hay un item secundario";
+        }
+
+        System.out.printf("Item Primario: %s%nItem Secundario: %s%n", itemP, itemS);
     }
 
     public static void imprimirInformacionDePersonaje(Personaje personaje) {
+        System.out.printf("=====================================================%n");
         System.out.printf("Informacion de Personaje %s: %n", personaje.getNombre());
+        System.out.printf("Clase: %s%n", personaje.getClase());
+        System.out.printf("Sexo: %c%n", personaje.getSexo());
+        System.out.printf("Vida maxima: %d%nVida Actual: %d%n", personaje.getVidaMaxima(), personaje.getVidaActual());
+        System.out.printf("Estamina maxima: %d%nEstamina Actual: %d%n", personaje.getEstaminaMaxima(), personaje.getEstaminaActual());
+        System.out.printf("Ataque Fisico: %d%nAfinidad Magica: %d%n", personaje.getAtaqueFisico(), personaje.getAfinidadMagica());
+        System.out.printf("Dinero: %d%n", personaje.getDineroActual());
+        System.out.printf("EXP: %d%nNivel: %d%n", personaje.getEXP(), personaje.getNivel());
+        imprimirInformacionDeItems(personaje);
+        System.out.printf("Capacidad de inventario: %s%n", personaje.inventario.getCapacidad());
+        System.out.printf("Vestuario: %n");
+        if(personaje.vestuario == null) {
+            System.out.printf("Esta desnud%s jajdkflsakdjlkajdlfkasjdf%n",  (Character.toUpperCase(personaje.getSexo()) == 'M') ? "o" : "a");
+        } else {
+            System.out.printf("No esta desnud%s jajdkflsakdjlkajdlfkasjdf%n",  (Character.toUpperCase(personaje.getSexo()) == 'M') ? "o" : "a");
+        }
+        /*
+        for(Item item : personaje.vestuario) {
+            if(item != null) {
+                System.out.printf("%t%s", item.getNombre());
+            }
+        }*/
     }
 }
  
